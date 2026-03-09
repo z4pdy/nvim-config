@@ -6,3 +6,9 @@ vim.opt.tabstop = tab_size
 vim.opt.shiftwidth = tab_size
 vim.opt.softtabstop = tab_size
 vim.opt.expandtab = true
+
+vim.opt.scrolloff = 20
+
+vim.opt.updatetime = 50
+
+vim.opt.syntax = "on"
