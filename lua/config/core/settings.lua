@@ -12,3 +12,8 @@ vim.opt.scrolloff = 20
 vim.opt.updatetime = 50
 
 vim.opt.syntax = "on"
+vim.opt.signcolumn = "yes"
+vim.diagnostic.config({
+    virtual_text = true,
+    update_in_insert = true,
+})
