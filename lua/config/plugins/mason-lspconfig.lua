@@ -5,10 +5,19 @@ return {
         "neovim/nvim-lspconfig",
         "hrsh7th/cmp-nvim-lsp"
     },
-    opts = {
-        ensure_installed = { "lua_ls", "jdtls" },
-    },
     config = function()
+        vim.api.nvim_create_autocmd("LspAttach", {
+            callback = function(args)
+                local opts = { buffer = args.buf }
+                vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
+                vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
+                vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
+                vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
+            end
+        })
+        require("mason-lspconfig").setup({
+            ensure_installed = { "lua_ls", "jdtls", "clangd" },
+        })
         local capabilities = require("cmp_nvim_lsp").default_capabilities()
         vim.lsp.config("lua_ls", {
             capabilities = capabilities,
@@ -39,5 +48,10 @@ return {
             capabilities = capabilities
         })
         vim.lsp.enable("jdtls")
+
+        vim.lsp.config("clangd", {
+            capabilities = capabilities
+        })
+        vim.lsp.enable("clangd")
     end
 }
