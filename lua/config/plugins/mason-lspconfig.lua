@@ -13,6 +13,8 @@ return {
                 vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
                 vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
                 vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
+                vim.keymap.set("n", "ga", vim.lsp.buf.code_action, opts)
+                vim.keymap.set("n", "gl", vim.diagnostic.open_float)
             end
         })
         require("mason-lspconfig").setup({
@@ -44,8 +46,12 @@ return {
         })
         vim.lsp.enable("lua_ls")
 
+        local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":p:h:t")
+        local workspace_dir = vim.fn.stdpath("cache") .. "/jdtls/" .. project_name
+
         vim.lsp.config("jdtls", {
-            capabilities = capabilities
+            capabilities = capabilities,
+            cmd = { "jdtls", "-data", workspace_dir },
         })
         vim.lsp.enable("jdtls")
 

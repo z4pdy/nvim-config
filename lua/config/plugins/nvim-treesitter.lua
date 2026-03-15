@@ -4,7 +4,7 @@ return {
     build = ':TSUpdate',
     config = function()
         local languages = { "lua", "c", "cpp", "java" }
-        require'nvim-treesitter'.install(languages) 
+        require'nvim-treesitter'.install(languages)
 
         -- highlighting
         vim.api.nvim_create_autocmd('FileType', {
