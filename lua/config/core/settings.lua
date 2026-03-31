@@ -19,3 +19,6 @@ vim.diagnostic.config({
 })
 
 vim.opt.termguicolors = true
+
+vim.o.ignorecase = true
+vim.o.smartcase = true
