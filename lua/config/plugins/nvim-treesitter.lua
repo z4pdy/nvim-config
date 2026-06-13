@@ -3,7 +3,15 @@ return {
     lazy = false,
     build = ':TSUpdate',
     config = function()
-        local languages = { "lua", "c", "cpp", "java" }
+        local languages = {
+            "lua",
+            "c",
+            "cpp",
+            "java",
+            "python",
+            "html",
+            "css",
+        }
         require'nvim-treesitter'.install(languages)
 
         -- highlighting

@@ -18,7 +18,14 @@ return {
             end
         })
         require("mason-lspconfig").setup({
-            ensure_installed = { "lua_ls", "jdtls", "clangd" },
+            ensure_installed = {
+                "lua_ls",
+                "jdtls",
+                "clangd",
+                "pyright",
+                "html",
+                "cssls"
+            },
         })
         local capabilities = require("cmp_nvim_lsp").default_capabilities()
         vim.lsp.config("lua_ls", {
@@ -59,5 +66,20 @@ return {
             capabilities = capabilities
         })
         vim.lsp.enable("clangd")
+
+        vim.lsp.config("pyright", {
+            capabilities = capabilities
+        })
+        vim.lsp.enable("pyright")
+
+        vim.lsp.config("html", {
+            capabilities = capabilities
+        })
+        vim.lsp.enable("html")
+
+        vim.lsp.config("cssls", {
+            capabilities = capabilities
+        })
+        vim.lsp.enable("cssls")
     end
 }
