@@ -11,6 +11,7 @@ return {
             "python",
             "html",
             "css",
+            "json",
         }
         require'nvim-treesitter'.install(languages)
 
