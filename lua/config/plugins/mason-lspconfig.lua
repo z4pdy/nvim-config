@@ -24,19 +24,18 @@ return {
                 end, opts)
             end
         })
+        local servers = {
+            "lua_ls",
+            "clangd",
+            "pyright",
+            "html",
+            "cssls",
+        }
         require("mason-lspconfig").setup({
-            ensure_installed = {
-                "lua_ls",
-                -- "jdtls",
-                "clangd",
-                "pyright",
-                "html",
-                "cssls"
-            },
+            ensure_installed = servers
         })
         local capabilities = require("cmp_nvim_lsp").default_capabilities()
         vim.lsp.config("lua_ls", {
-            capabilities = capabilities,
             settings = {
                 Lua = {
                     runtime = {
@@ -58,35 +57,12 @@ return {
                 }
             }
         })
-        vim.lsp.enable("lua_ls")
 
-        --[[
-        local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":p:h:t")
-        local workspace_dir = vim.fn.stdpath("cache") .. "/jdtls/" .. project_name
-        vim.lsp.config("jdtls", {
-            capabilities = capabilities,
-            cmd = { "jdtls", "-data", workspace_dir },
-        })
-        vim.lsp.enable("jdtls")
-        --]]
-        vim.lsp.config("clangd", {
-            capabilities = capabilities
-        })
-        vim.lsp.enable("clangd")
-
-        vim.lsp.config("pyright", {
-            capabilities = capabilities
-        })
-        vim.lsp.enable("pyright")
-
-        vim.lsp.config("html", {
-            capabilities = capabilities
-        })
-        vim.lsp.enable("html")
-
-        vim.lsp.config("cssls", {
-            capabilities = capabilities
-        })
-        vim.lsp.enable("cssls")
+        for _, server in ipairs(servers) do
+            vim.lsp.config(server, {
+                capabilities = capabilities
+            })
+            vim.lsp.enable(server)
+        end
     end
 }

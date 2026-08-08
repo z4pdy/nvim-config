@@ -24,3 +24,5 @@ vim.o.ignorecase = true
 vim.o.smartcase = true
 
 vim.opt.clipboard = "unnamedplus"
+
+vim.opt.foldenable = false
