@@ -30,6 +30,9 @@ return {
             "pyright",
             "html",
             "cssls",
+            "yamlls",
+            "dockerls",
+            "bashls",
         }
         require("mason-lspconfig").setup({
             ensure_installed = servers

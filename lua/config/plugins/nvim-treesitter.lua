@@ -12,6 +12,10 @@ return {
             "html",
             "css",
             "json",
+            "yaml",
+            "dockerfile",
+            "bash",
+            "groovy"
         }
         require'nvim-treesitter'.install(languages)
 
