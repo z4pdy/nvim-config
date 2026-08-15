@@ -15,13 +15,14 @@ return {
             "yaml",
             "dockerfile",
             "bash",
-            "groovy"
+            "groovy",
+            "javascript"
         }
         require'nvim-treesitter'.install(languages)
 
         -- highlighting
         vim.api.nvim_create_autocmd('FileType', {
-            pattern = languages,
+            pattern = vim.list_extend(vim.deepcopy(languages), { "javascriptreact" }),
             callback = function() vim.treesitter.start() end,
         })
 

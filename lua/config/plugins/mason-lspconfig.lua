@@ -34,6 +34,8 @@ return {
             "yamlls",
             "dockerls",
             "bashls",
+            "vtsls",
+            "eslint"
         }
         require("mason-lspconfig").setup({
             ensure_installed = servers
