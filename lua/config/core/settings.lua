@@ -7,6 +7,25 @@ vim.opt.shiftwidth = tab_size
 vim.opt.softtabstop = tab_size
 vim.opt.expandtab = true
 
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = {
+        "javascript",
+        "javascriptreact",
+        "css",
+        "html",
+        "json",
+    },
+    callback = function()
+        local small_tab_size = 2
+        vim.bo.tabstop = small_tab_size
+        vim.bo.shiftwidth = small_tab_size
+        vim.bo.softtabstop = small_tab_size
+        vim.bo.expandtab = true
+    end,
+})
+
+
+
 vim.opt.scrolloff = 20
 
 vim.opt.updatetime = 50
