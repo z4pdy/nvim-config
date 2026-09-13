@@ -11,12 +11,18 @@ vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
 
 vim.keymap.set("x", "p", "\"_dP")
+
 vim.keymap.set("n", "<Esc>", function()
     if vim.v.hlsearch == 1 then
         vim.cmd("nohlsearch")
     else
         vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Esc>", true, false, true), "n", true)
     end
+end)
+
+vim.keymap.set("s", "<Esc>", function()
+    vim.snippet.stop()
+    vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Esc>", true, false, true),"n", false)
 end)
 
 vim.keymap.set("v", "<", "<gv")
