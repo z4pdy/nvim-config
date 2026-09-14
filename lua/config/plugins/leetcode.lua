@@ -10,23 +10,28 @@ return {
         ---@type lc.lang
         lang = "java",
         hooks = {
+            enter = {
+                function ()
+                    vim.keymap.set("n", "<leader>lt", "<cmd>Leet tabs<CR>", {
+                        buffer = false,
+                    })
+
+                    vim.keymap.set("n", "<leader>ll", "<cmd>Leet list<CR>", {
+                        buffer = false,
+                    })
+                end
+            },
             question_enter = {
                 function()
                     vim.wo.foldenable = true
                     vim.cmd("Leet last_submit")
-                    vim.keymap.set("n", "<leader>lt", "<cmd>Leet tabs<CR>", {
-                        buffer = true,
-                        desc = "LeetCode Tabs",
-                    })
 
                     vim.keymap.set("n", "<leader>ls", "<cmd>Leet submit<CR>", {
                         buffer = true,
-                        desc = "LeetCode Submit",
                     })
 
                     vim.keymap.set("n", "<leader>lr", "<cmd>Leet run<CR>", {
                         buffer = true,
-                        desc = "LeetCode Run",
                     })
                 end,
             },
